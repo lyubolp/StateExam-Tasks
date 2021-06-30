@@ -1,0 +1,15 @@
+Use movies
+
+-- Task 1 --
+SELECT s.NAME, s.ADDRESS
+From STUDIO s, MOVIE m, MOVIE m2
+Where s.NAME = m.STUDIONAME and m.INCOLOR = 'Y' and s.NAME = m2.STUDIONAME and m2.INCOLOR ='N'
+Group By s.NAME, s.ADDRESS
+ORDER BY s.ADDRESS ASC 
+
+-- Task 2 --
+Select s.NAME, s.ADDRESS, AVG(m.[LENGTH])
+From STUDIO s
+LEFT JOIN MOVIE m ON s.NAME  = m.STUDIONAME 
+GROUP BY s.NAME, s.ADDRESS
+HAVING COUNT(m.TITLE) <= 3
